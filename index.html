@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Birthday Mission for Jiya Mam</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; background-color: #050a10; color: #00ffcc; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 92%; max-width: 500px; padding: 30px; background: rgba(15, 25, 35, 0.98); border: 1px solid #00ffcc; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; }
+        .scramble-box { background: #001a1a; padding: 15px; border-radius: 12px; font-family: monospace; font-size: 1.3rem; letter-spacing: 5px; margin: 20px 0; color: #fff; border: 1px dashed #00ffcc; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #334444; background: #0a1118; color: #fff; font-size: 1rem; margin-bottom: 15px; outline: none; }
+        button { width: 100%; padding: 15px; border-radius: 12px; border: none; background: linear-gradient(45deg, #00ffcc, #00cca3); color: #050a10; font-weight: bold; cursor: pointer; }
+        #result-screen { display: none; text-align: left; animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+        .cake-icon { font-size: 3.5rem; text-align: center; display: block; }
+        .letter { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 15px; line-height: 1.7; font-size: 0.95rem; color: #e0fcf6; }
+        .highlight { color: #00ffcc; font-weight: bold; }
+        .signature { text-align: right; margin-top: 20px; font-style: italic; color: #fff; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="game-screen">
+        <h2>SYSTEM REVEAL</h2>
+        <p>Solve the logic gate for Jiya Mam:</p>
+        <div class="scramble-box">M-T-H-A-I-L-O-G-R</div>
+        <input type="text" id="userInput" placeholder="Unscramble the word..." autocomplete="off">
+        <button onclick="check()">EXECUTE DECRYPTION</button>
+    </div>
+    <div id="result-screen">
+        <span class="cake-icon">🎂</span>
+        <div class="letter">
+            <h2 style="text-align:center; color:#fff; border-bottom:1px solid #00ffcc; padding-bottom:10px;">Happy Birthday, Jiya Mam!</h2>
+            <p>Dear Mam, you are the <span class="highlight">Master Architect</span> of our futures. Just like a perfectly written <span class="highlight">Algorithm</span>, you guide us through every challenge.</p>
+            <p>On this special day, I wish that your life's code is always free of bugs and your happiness reaches <span class="highlight">infinite loops</span>!</p>
+            <div class="signature">With respect,<br><span class="highlight">Your Favourite Student</span></div>
+        </div>
+    </div>
+</div>
+<script>
+    function check() {
+        const val = document.getElementById('userInput').value.toLowerCase().trim();
+        if(val === "algorithm") {
+            document.getElementById('game-screen').style.display = "none";
+            document.getElementById('result-screen').style.display = "block";
+            var end = Date.now() + 4000;
+            (function frame() {
+              confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#00ffcc', '#ffffff'] });
+              confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#00ffcc', '#ffffff'] });
+              if (Date.now() < end) { requestAnimationFrame(frame); }
+            }());
+        } else { alert("Oops! Try again!"); }
+    }
+</script>
+</body>
+</html>
