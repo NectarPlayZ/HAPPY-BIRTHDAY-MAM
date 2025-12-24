@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Birthday Mission for Jiya Mam</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; background-color: #050a10; color: #00ffcc; font-family: 'Segoe UI', Roboto, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        .container { width: 92%; max-width: 500px; padding: 30px; background: rgba(15, 25, 35, 0.98); border: 1px solid #00ffcc; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.7); text-align: center; }
+        .scramble-box { background: #001a1a; padding: 20px; border-radius: 15px; font-family: 'Courier New', monospace; font-size: 1.4rem; letter-spacing: 6px; margin: 25px 0; color: #fff; border: 1px dashed #00ffcc; }
+        input { width: 100%; padding: 18px; border-radius: 15px; border: 1px solid #334444; background: #0a1118; color: #fff; font-size: 1rem; margin-bottom: 20px; outline: none; text-align: center; }
+        .btn { width: 100%; padding: 18px; border-radius: 15px; border: none; background: linear-gradient(45deg, #00ffcc, #00cca3); color: #050a10; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        #result-screen { display: none; text-align: left; animation: slideIn 0.8s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .cake-icon { font-size: 4rem; text-align: center; display: block; margin-bottom: 15px; filter: drop-shadow(0 0 10px #00ffcc); }
+        .letter { background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 20px; line-height: 1.8; font-size: 1rem; color: #e0fcf6; border-left: 3px solid #00ffcc; }
+        .letter h2 { color: #fff; margin-top: 0; text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .highlight { color: #00ffcc; font-weight: bold; }
+        .signature { text-align: right; margin-top: 30px; font-style: italic; color: #fff; border-top: 1px solid rgba(0,255,204,0.2); padding-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="game-screen">
+        <h2 style="margin-top:0; letter-spacing: 1px;">ENCRYPTED MESSAGE</h2>
+        <p style="color: #8899aa;">Solve the sequence to unlock your surprise, Jiya Mam:</p>
+        <div class="scramble-box">AL-GO-RI-THM</div>
+        <input type="text" id="userInput" placeholder="Enter the decrypted key..." autocomplete="off">
+        <button class="btn" onclick="check()">DECRYPT SURPRISE</button>
+    </div>
+
+    <div id="result-screen">
+        <span class="cake-icon">🎂</span>
+        <div class="letter">
+            <h2>Happy Birthday, Jiya Mam!</h2>
+            <p>Dear Mam,</p>
+            <p>To the world, you are an educator, but to us, you are the <span class="highlight">Ultimate Architect</span> of our minds. Just like a flawless <span class="highlight">Algorithm</span>, you have the unique gift of turning complex confusion into perfect clarity.</p>
+            <p>Thank you for pushing us to think deeper, for debugging our mistakes with patience, and for showing us that <span class="highlight">Dedication</span> is the most powerful code one can write.</p>
+            <p>On this special day, I wish that your life's journey stays in an <span class="highlight">Infinite Loop of Joy</span>, that your health remains at 100% capacity, and that every dream you process gets executed with success.</p>
+            <p>Have a day as wonderful and brilliant as the lessons you teach us!</p>
+            <div class="signature">With deepest respect and gratitude,<br><span class="highlight">Your Favourite Student</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function check() {
+        const val = document.getElementById('userInput').value.toLowerCase().trim();
+        if(val === "algorithm") {
+            document.getElementById('game-screen').style.display = "none";
+            document.getElementById('result-screen').style.display = "block";
+            
+            // Premium Confetti Celebration
+            var end = Date.now() + 5000;
+            (function frame() {
+              confetti({ particleCount: 7, angle: 60, spread: 60, origin: { x: 0 }, colors: ['#00ffcc', '#ffffff', '#00cca3'] });
+              confetti({ particleCount: 7, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#00ffcc', '#ffffff', '#00cca3'] });
+              if (Date.now() < end) { requestAnimationFrame(frame); }
+            }());
+        } else { alert("The decryption key is incorrect. Please try again!"); }
+    }
+</script>
+</body>
+</html>
